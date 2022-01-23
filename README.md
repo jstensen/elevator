@@ -2,7 +2,7 @@
 
 Dette repoet inneholder kode for et enkelt heissystem. Koden er skrevet i Kotlin.
 
-##Problemstillinger/kvaliteter heissystemet må hensynta 
+## Problemstillinger/kvaliteter heissystemet må hensynta 
 
 * Kapasitet til heisen (kg/antall personer)
 * Hvor mange etasjer heisen skal kunne gå til  
@@ -17,14 +17,14 @@ Dette repoet inneholder kode for et enkelt heissystem. Koden er skrevet i Kotlin
 * Stopp for vedlikehold
 * Estimere reisetid for at heisen når den går mellom etasjer 
 
-##Forutsetninger
+## Forutsetninger
 
 * 1 heis
 * Flere passasjerer
 * Passasjeren kan trykke på for å gå til flere etasjer inne i heisen 
 * Nødstopp: antar at det ikke er ønskelig at heisen kan gå til andre etasjer når heisen er i denne tilstanden.
 
-##Design
+## Design
 
 * To typer knapper, disse sender requester til `ElevatorController` som styrer `Elevator`
   * 1: `ElevatorButton` - representerer knappene inne i heisen
