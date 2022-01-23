@@ -40,4 +40,5 @@ enum class ElevatorState {
     GOING_UP,
     GOING_DOWN,
     IDLE,
+    STOPPED,
 }

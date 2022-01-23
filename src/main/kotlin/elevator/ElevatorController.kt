@@ -9,7 +9,6 @@ class ElevatorController(
     private var goToFloorRequests: MutableList<Int> = mutableListOf()
     private var pickUpRequests: MutableList<Pair<Int, Direction>> = mutableListOf()
 
-
     fun goToFloorRequest(floorNumber: Int) {
         goToFloorRequests.add(floorNumber)
     }
@@ -18,14 +17,21 @@ class ElevatorController(
         pickUpRequests.add(Pair(floorNumber, direction))
     }
 
+    fun emergencyStop() {
+        elevator.state = ElevatorState.STOPPED
+    }
+
     fun scheduleElevator() {
+        if (elevator.state == ElevatorState.STOPPED) {
+            println("Elevator is emergency STOPPED, and will not handle new events.")
+            return
+        }
         when (schedulingAlgorithm) {
             SchedulingAlgorithm.FIFO -> {
                 scheduleElevatorFifo()
             }
         }
     }
-
 
     /*
     * Simple FIFO elevator algorithm.
@@ -49,12 +55,9 @@ class ElevatorController(
         clearAllLists()
     }
 
-
     private fun clearAllLists() {
         goToFloorRequests.clear()
         pickUpRequests.clear()
         destinationList.clear()
     }
-
-
 }

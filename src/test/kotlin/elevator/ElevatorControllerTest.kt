@@ -95,12 +95,19 @@ internal class ElevatorControllerTest {
     }
 
     @Test
-    fun `Test get estimated elevator travel time when travelling from 1st to 4th floor`() {
+    fun `Test emergency stop, should be STOPPED even when new requests arrive`() {
+
         val elevator = Elevator(numberOfFloors = 10, currentFloor = 1)
-        val estimatedTimeFrom1stTo4thFloor = elevator.estimatedTimeToFloor(destinationFloor = 4)
+        val elevatorController = ElevatorController(elevator = elevator)
+        val floorButton5 = FloorButton(floorNumber = 5, elevatorController)
 
-        assertEquals(expected = (3 * elevator.speedPerFloor), actual = estimatedTimeFrom1stTo4thFloor)
+        elevatorController.emergencyStop()
+        assertEquals(expected = ElevatorState.STOPPED, actual = elevator.state)
+
+        floorButton5.goUp()
+
+        elevatorController.scheduleElevator()
+        assertEquals(expected = ElevatorState.STOPPED, actual = elevator.state)
     }
-
 
 }
