@@ -5,7 +5,7 @@ class ElevatorController(
     private val schedulingAlgorithm: SchedulingAlgorithm = SchedulingAlgorithm.FIFO,
 ) {
 
-    var destinationList = ArrayList<Int>()
+    private var destinationList: MutableList<Int> = mutableListOf()
     private var goToFloorRequests: MutableList<Int> = mutableListOf()
     private var pickUpRequests: MutableList<Pair<Int, Direction>> = mutableListOf()
 
