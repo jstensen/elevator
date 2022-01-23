@@ -26,7 +26,23 @@ class ElevatorController(
         }
     }
 
+
+    /*
+    * Simple FIFO elevator algorithm.
+    *
+    * This function updates a list containing the order of the upcoming destinations
+    * the elevator will travel to. It also send the commands to the elevator
+    * telling it which floor to move to.
+    *
+    * 1. First request has to be from a passenger waiting in a floor
+    * 2. Requests coming from passengers inside the elevator (goToFloorRequests)
+    * gets prioritized over passengers waiting in the various floors (pickUpRequests).
+    * */
     private fun scheduleElevatorFifo() {
+        if (pickUpRequests.isNotEmpty()) {
+            val firstFloorToGoTo = pickUpRequests.removeFirst().first
+            destinationList.add(firstFloorToGoTo)
+        }
         goToFloorRequests.forEach { destinationList.add(it) }
         pickUpRequests.forEach { destinationList.add(it.first) }
         destinationList.forEach { elevator.moveTo(it) }

@@ -5,6 +5,20 @@ import kotlin.test.assertEquals
 
 internal class ElevatorControllerTest {
 
+    @Test
+    fun `Test one passenger asking for getting picked up in the 7th floor`() {
+        val elevator = Elevator(numberOfFloors = 10)
+        val elevatorController = ElevatorController(elevator)
+        val floorButton7 = FloorButton(
+            elevatorController = elevatorController,
+            floorNumber = 7,
+        )
+
+        floorButton7.goUp()
+        elevatorController.scheduleElevator()
+        assertEquals(expected = 7, actual = elevator.currentFloor)
+    }
+
 
     @Test
     fun `Test one passenger going from 4th floor to 1st floor`() {
