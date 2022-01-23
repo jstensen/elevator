@@ -42,7 +42,8 @@ class ElevatorController(
     *
     * 1. First request has to be from a passenger waiting in a floor
     * 2. Requests coming from passengers inside the elevator (goToFloorRequests)
-    * gets prioritized over passengers waiting in the various floors (pickUpRequests).
+    * gets prioritized over passengers waiting in the various floors (pickUpRequests)
+    * 3. The requests types get processed in the order they arrive
     * */
     private fun scheduleElevatorFifo() {
         if (pickUpRequests.isNotEmpty()) {
