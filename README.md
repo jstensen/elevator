@@ -39,6 +39,7 @@ Dette repoet inneholder kode for et enkelt heissystem. Koden er skrevet i Kotlin
 ## Forbedringer som kan gjøres
 
 - [ ] Forbedre sorteringsalgoritmen for hvilken rekkefølge requestene skal utføres på
+- [ ] Feilhåndtering
 - [ ] Implementere singleton pattern for `ElevatorController`
 - [ ] Kjøre `scheduleElevator()` som en egen jobb som går regelmessig og i tillegg lytter på eventer?
 - [ ] Definere interfaces?
